@@ -32,7 +32,7 @@ function formatDate(isoDate) {
   const year = d.getFullYear();
   return `${day}/${month}/${year}`;
 }
-
+/*
 function renderIdentityCard(data, uid) {
   document.getElementById('studentDetails').innerHTML = `
     <div class="card mx-auto" style="max-width: 350px;">
@@ -46,6 +46,103 @@ function renderIdentityCard(data, uid) {
     </div>
   `;
 }
+*/
+
+function renderIdentityCard(data, uid) {
+  console.log("Raw Data:", data);
+  
+  let photoUrl = data.Photo || '';
+  let fileId = '';
+
+  if (photoUrl.includes("drive.google.com")) {
+    const fileMatch1 = photoUrl.match(/\/d\/(.*?)\//); // for /file/d/FILE_ID/view
+    const fileMatch2 = photoUrl.match(/[?&]id=([^&]+)/); // for open?id=FILE_ID
+
+    if (fileMatch1) {
+      fileId = fileMatch1[1];
+      console.log("Matched fileId from /d/:", fileId);
+    } else if (fileMatch2) {
+      fileId = fileMatch2[1];
+      console.log("Matched fileId from ?id=:", fileId);
+    }
+
+    if (fileId) {
+      photoUrl = `https://drive.google.com/uc?export=view&id=${fileId}`;
+    } else {
+      console.warn("No valid fileId found in URL.");
+    }
+  }
+
+  if (!photoUrl || !fileId) {
+    // fallback image
+    photoUrl = 'https://placehold.co/100x100?text=No+Photo';
+    console.warn("Using fallback image:", photoUrl);
+  }
+
+  console.log("Final Photo URL:", photoUrl);
+
+  document.getElementById('studentDetails').innerHTML = `
+    <div style="
+      max-width: 320px;
+      margin: 0 auto;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-top: 120px solid #8b1538;
+      position: relative;
+      text-align: center;
+    ">
+
+      <!-- Photo -->
+      <div style="position: absolute; top: 6px; left: 50%; transform: translateX(-50%);">
+        <img src="${photoUrl}" style="
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          border: 4px solid white;
+          object-fit: cover;
+          background: white;
+        " alt="Profile Photo" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=No+Photo';"/>
+      </div>
+
+      <!-- Content -->
+      <div style="margin-top: 80px; padding: 20px;">
+        <h2 style="margin: 10px 0 5px; font-size: 22px; color: #000;">${data.Name || 'Name not available'}</h2>
+        <div style="font-size: 14px; color: #666;">${data.District || 'District not available'}</div>
+
+        ${uid ? `
+          <div style="
+            margin: 15px auto;
+            display: inline-block;
+            background: #8b1538;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+          ">ID: ${uid}</div>
+        ` : ''}
+
+        <div style="margin: 10px 0; font-size: 14px; color: #000;">
+          <strong>Emergency Contact:</strong><br>
+          <span style="font-weight: bold; font-size: 15px;">+91 ${data["Phone number"]}</span>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="background: #8b1538; color: white; padding: 10px; font-size: 12px;">
+        <div style="margin-bottom: 5px;">
+          <i class="bi bi-geo-alt-fill"></i>
+          #64, Shankarmutt Road, Basavanagudi, Bengaluru
+        </div>
+        <div>Karnataka - 560004, India</div>
+      </div>
+    </div>
+  `;
+}
+
 
 function initStudent(url) {
   const uid = new URLSearchParams(location.search).get('id');
