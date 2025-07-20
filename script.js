@@ -142,10 +142,15 @@ function renderIdentityCard(data, uid) {
           <strong>Emergency Contact:</strong><br>
           <span style="font-weight: bold; font-size: 15px;">+91 ${data["Phone number"]}</span>
         </div>
-        <!-- QR Code -->
+        
+        <!-- QR Code / Verified Badge -->
         <div style="margin-top: 18px;">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(window.location.href+"&type=verify")}" alt="QR Code" style="border:1px solid #eee; border-radius:8px;">
-          <div style="font-size:11px; color:#888; margin-top:2px;">Scan for online verification</div>
+          ${
+            new URLSearchParams(window.location.search).get('type') === 'verify'
+              ? `<img src="https://i.ibb.co/PGcGBVrq/verified.png" alt="Verified" style="width:90px;height:90px;border-radius:8px;border:1px solid #eee;">`
+              : `<img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(window.location.href+"&type=verify")}" alt="QR Code" style="border:1px solid #eee; border-radius:8px;">
+                 <div style="font-size:11px; color:#888; margin-top:2px;">Scan for online verification</div>`
+          }
         </div>
       </div>
 
@@ -172,7 +177,7 @@ function initStudent(url) {
       if (student) {
         renderIdentityCard(student, uid);
       } else {
-        document.getElementById('studentDetails').textContent = 'Student not found.';
+        document.getElementById('studentDetails').textContent = 'This Player is NOT verifed.';
       }
     })
     .catch(() => {
