@@ -144,7 +144,7 @@ function renderIdentityCard(data, uid) {
         </div>
         <!-- QR Code -->
         <div style="margin-top: 18px;">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(window.location.href)+"&type=verify"}" alt="QR Code" style="border:1px solid #eee; border-radius:8px;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(window.location.href+"&type=verify")}" alt="QR Code" style="border:1px solid #eee; border-radius:8px;">
           <div style="font-size:11px; color:#888; margin-top:2px;">Scan for online verification</div>
         </div>
       </div>
