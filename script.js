@@ -104,7 +104,7 @@ function renderIdentityCard(data, uid) {
           border: 4px solid white;
           object-fit: cover;
           background: white;
-        " alt="Profile Photo" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=No+Photo';"/>
+        " alt="Profile Photo" onerror="this.onerror=null; this.src='https://i.ibb.co/JRZkXwwk/471485559-592272406722282-6638279170456780772-n.png';"/>
       </div>
 
       <!-- Content -->
