@@ -121,7 +121,7 @@ function renderIdentityCard(data, uid) {
       </div>
 
       <!-- Content -->
-      <div style="margin-top: 96px; padding: 20px;">
+      <div style="margin-top: 75px; padding: 20px;">
         <h2 style="margin: 10px 0 5px; font-size: 22px; color: #000;">${data.Name || 'Name not available'}</h2>
         <div style="font-size: 14px; color: #666;">${data.District || 'District not available'}</div>
 
@@ -141,6 +141,11 @@ function renderIdentityCard(data, uid) {
         <div style="margin: 10px 0; font-size: 14px; color: #000;">
           <strong>Emergency Contact:</strong><br>
           <span style="font-weight: bold; font-size: 15px;">+91 ${data["Phone number"]}</span>
+        </div>
+        <!-- QR Code -->
+        <div style="margin-top: 18px;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=${encodeURIComponent(window.location.href)}" alt="QR Code" style="border:1px solid #eee; border-radius:8px;">
+          <div style="font-size:11px; color:#888; margin-top:2px;">Scan for online verification</div>
         </div>
       </div>
 
