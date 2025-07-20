@@ -90,27 +90,26 @@ function renderIdentityCard(data, uid) {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-top: 120px solid #8b1538;
+      border-top: 0;
       position: relative;
       text-align: center;
     ">
-      <!-- Association Title -->
+      <!-- Association Title Bar -->
       <div style="
-        position: absolute;
-        top: 18px;
-        left: 0;
-        width: 100%;
+        background: #8b1538;
         color: #fff;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
         letter-spacing: 1px;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        padding: 22px 0 18px 0;
+        width: 100%;
+        text-align: center;
       ">
         Jharkhand Pickleball Association
       </div>
 
       <!-- Photo -->
-      <div style="position: absolute; top: 56px; left: 50%; transform: translateX(-50%);">
+      <div style="position: absolute; top: 84px; left: 50%; transform: translateX(-50%);">
         <img src="${photoUrl}" style="
           width: 100px;
           height: 100px;
@@ -122,7 +121,7 @@ function renderIdentityCard(data, uid) {
       </div>
 
       <!-- Content -->
-      <div style="margin-top: 130px; padding: 20px;">
+      <div style="margin-top: 96px; padding: 20px;">
         <h2 style="margin: 10px 0 5px; font-size: 22px; color: #000;">${data.Name || 'Name not available'}</h2>
         <div style="font-size: 14px; color: #666;">${data.District || 'District not available'}</div>
 
