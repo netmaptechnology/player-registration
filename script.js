@@ -75,7 +75,7 @@ function renderIdentityCard(data, uid) {
 
   if (!photoUrl || !fileId) {
     // fallback image
-    photoUrl = 'https://placehold.co/100x100?text=No+Photo';
+    photoUrl = 'https://i.ibb.co/JRZkXwwk/471485559-592272406722282-6638279170456780772-n.png';
     console.warn("Using fallback image:", photoUrl);
   }
 
@@ -135,9 +135,10 @@ function renderIdentityCard(data, uid) {
       <div style="background: #8b1538; color: white; padding: 10px; font-size: 12px;">
         <div style="margin-bottom: 5px;">
           <i class="bi bi-geo-alt-fill"></i>
-          #64, Shankarmutt Road, Basavanagudi, Bengaluru
+        Gita Colony, Singh More, Latma Road,
+	  
         </div>
-        <div>Karnataka - 560004, India</div>
+        <div> Ranchi, Jharkhand.</div>
       </div>
     </div>
   `;
