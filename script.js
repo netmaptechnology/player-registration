@@ -83,16 +83,16 @@ function renderIdentityCard(data, uid) {
 
   document.getElementById('studentDetails').innerHTML = `
     <div style="
-      max-width: 320px;
-      margin: 0 auto;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-top: 0;
-      position: relative;
-      text-align: center;
+ max-width: 320px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 3px solid #8b1538; /* <-- Add this line for border */
+  position: relative;
+  text-align: center;
     ">
       <!-- Association Title Bar -->
       <div style="
